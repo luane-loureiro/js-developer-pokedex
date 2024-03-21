@@ -1,20 +1,27 @@
-
 const pokeApi = {}
+
+function processNumber(number) {
+    if (number >= 0 && number <= 9) {
+        return `00${number}`
+    } else if (number >= 10 && number <= 99) {
+        return `0${number}` 
+    } else {
+        return number
+    }
+}
 
 function convertPokeApiDetailToPokemon(pokeDetail) {
     const pokemon = new Pokemon()
-    pokemon.number = pokeDetail.id
+    pokemon.id = pokeDetail.id
+    pokemon.number = processNumber(pokeDetail.id)
     pokemon.name = pokeDetail.name
-
     const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name)
-    const [type] = types
-
-    pokemon.types = types
+    const [ type ] = types
     pokemon.type = type
-
-    pokemon.photo = pokeDetail.sprites.other.dream_world.front_default
-
+    pokemon.types = types
+    
     return pokemon
+
 }
 
 pokeApi.getPokemonDetail = (pokemon) => {
@@ -23,7 +30,7 @@ pokeApi.getPokemonDetail = (pokemon) => {
         .then(convertPokeApiDetailToPokemon)
 }
 
-pokeApi.getPokemons = (offset = 0, limit = 5) => {
+pokeApi.getPokemons = (offset = 0, limit = 151) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 
     return fetch(url)
@@ -32,4 +39,6 @@ pokeApi.getPokemons = (offset = 0, limit = 5) => {
         .then((pokemons) => pokemons.map(pokeApi.getPokemonDetail))
         .then((detailRequests) => Promise.all(detailRequests))
         .then((pokemonsDetails) => pokemonsDetails)
+        .catch((error) => console.error(error))
+
 }
