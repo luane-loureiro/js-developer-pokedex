@@ -10,12 +10,22 @@ function processNumber(number) {
     }
 }
 
+function processAltura (altura) {
+    altura = altura/10;
+    return altura;
+}
+
+function processPeso(peso) {
+    peso = peso/10;
+    return peso;
+}
+
 function convertPokeApiDetailToPokemon(pokeDetail) {
   const pokemon = new Pokemon();
   pokemon.number = processNumber(pokeDetail.id);
   pokemon.name = pokeDetail.name;
-  pokemon.peso = pokeDetail.weight;
-  pokemon.altura = pokeDetail.height;
+  pokemon.peso = processPeso(pokeDetail.weight);
+  pokemon.altura = processAltura(pokeDetail.height);
 
   const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name);
   const [type] = types;
