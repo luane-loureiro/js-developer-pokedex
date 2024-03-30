@@ -2,6 +2,7 @@ const pokemonList = document.getElementById('pokemonList')
 
 function convertPokemonToLi(pokemon) {
     return `
+    <div class="container">
         <li class="pokemon ${pokemon.type}">
             <span class="number">#${pokemon.number}</span>
             <span class="name">${pokemon.name}</span>
@@ -11,10 +12,33 @@ function convertPokemonToLi(pokemon) {
                     ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
                 </ol>
 
-                <img class="principalImage" src="https://serebii.net/pokemongo/pokemon/${pokemon.number}.png""
-                alt="${pokemon.name}">
+                <img class="imgPrincipal" src="${pokemon.photo}"
+                     alt="${pokemon.name}">
             </div>
         </li>
+        <details>
+        <p>Altura: ${pokemon.altura}</p>
+        <p>Peso: ${pokemon.peso}</p>
+        <ul class="stats-container">
+        <div class="title"> <hr> Status <hr> </div>
+        ${Object.entries(pokemon.stats)
+          .map(
+            ([statName]) =>
+              `<li class='stats'>
+            <p>${statName}</p>
+            <p>${pokemon.stats[statName].base_stat}</p>
+            <span class='progress-bar dark'>
+            <span style="width: ${
+              pokemon.stats[statName].base_stat > 100
+                ? 100
+                : pokemon.stats[statName].base_stat
+            }%" 
+                class='progress ${pokemon.type}'/></span>
+        </li>`
+          )
+          .join("")}
+        </details>
+    </div>
     `
 }
 
