@@ -19,4 +19,4 @@
 
 
  ## 🚩Project Deploy
- 
+ https://js-developer-pokedex-lime.vercel.app/
