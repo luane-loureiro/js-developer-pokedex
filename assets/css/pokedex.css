@@ -229,7 +229,7 @@ ul{
     flex: 9;
   }
 
-@media screen and (min-width: 380px) {
+@media screen and (min-width: 300px) {
     .pokemons {
         grid-template-columns: 1fr;
     }
