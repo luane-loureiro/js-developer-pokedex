@@ -160,7 +160,8 @@ details{
 }
 
 .pagination button {
-    border: none;
+    border: double .5rem white;
+    background-image: linear-gradient(to bottom right, #e8e8e8, #787878);
     color: #fff;
     text-shadow: black 0.1em 0.1em 0.3em;
     background-color: #9f9fa0;
@@ -170,8 +171,8 @@ details{
 }
 
 .pagination button:hover {
-    background-color: #757575;
-    box-shadow: rgba(0, 0, 0, 0.299) 0.1em 0.1em 0.2em;
+    background-image: linear-gradient(to bottom right, #5c5c5c, #e8e8e863 );
+
 }
 
 ul {

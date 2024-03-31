@@ -17,6 +17,7 @@ function convertPokemonToLi(pokemon) {
             </div>
         </li>
         <details>
+          <summary>${pokemon.description}</summary>
         <p>Altura: ${pokemon.altura} m</p>
         <p>Peso: ${pokemon.peso} Kg</p>
         <ul class="stats-container">
