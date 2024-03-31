@@ -17,14 +17,19 @@ function convertPokemonToLi(pokemon) {
             </div>
         </li>
         <details>
-          <summary>${pokemon.description}</summary>
+          <summary>Detalhes</summary>
         <p>Altura: ${pokemon.altura} m</p>
         <p>Peso: ${pokemon.peso} Kg</p>
+
+        <ul class="stats-container">
+          <div class="title"> <hr> Habiliades <hr> </div>
+            ${pokemon.abilities.map((ability) => `<li class="ability"> ${ability}</li>`).join('')}
+        </ul>
+
         <ul class="stats-container">
         <div class="title"> <hr> Status <hr> </div>
         ${Object.entries(pokemon.stats)
-          .map(
-            ([statName]) =>
+          .map(([statName]) =>
               `<li class='stats'>
             <p>${statName}</p>
             <p>${pokemon.stats[statName].base_stat}</p>

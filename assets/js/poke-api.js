@@ -33,6 +33,12 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
   pokemon.types = types;
   pokemon.type = type;
 
+  const abilities = pokeDetail.abilities.map((abilitySlot) => abilitySlot.ability.name);
+  const [ability] = abilities;
+
+  pokemon.abilities = abilities;
+  pokemon.ability = ability;
+
   pokemon.stats.hp = pokeDetail.stats.find(
     (item) => item.stat.name === "hp"
   );
